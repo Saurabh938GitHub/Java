@@ -38,7 +38,7 @@ public class arraySortingNotString {
     
 	System.out.println(intList.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList()));
 	System.out.println(intList.stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList()));
-
+	System.out.println("2");
 	}
 	
 
