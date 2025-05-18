@@ -46,8 +46,6 @@ hh.remove(Object Key)-> removes value mapped to key
 hh.remove(Object Key, Object Value)-> deletes key value pair
 hh.replace(Object Key, Object Value)-> replace key value pair
 
-Sysout
-
 
 
 
