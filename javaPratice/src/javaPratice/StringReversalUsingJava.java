@@ -17,6 +17,6 @@ public class StringReversalUsingJava {
 	    }
 	    obj.close();
 	    System.out.println("reversed string is: "+new String(c));
-
+	    System.out.println("string");
 }
 }
