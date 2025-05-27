@@ -1,0 +1,90 @@
+-- xml hierarchy: suite>test>classes>class>methods
+-- to remove specific methods from a class but execute rest: <class name="test.day3"><methods><exclude name="MobileloginCarLoan"/></methods></class>
+-- to include only specific methods from a class: <class name="test.day3"><methods><include name="MobileloginCarLoan"/></methods></class>
+-- to remove/include many methods from a class , use regular expression(.*):<class name="test.day3"><methods><exclude name="Mobile.*"/></methods></class>
+-- @BeforeTest-- will execute code before all @Test in the Test folder where it is defined
+-- @AfterTest-- will execute code after all @Test in the Test folder where it is defined
+-- @BeforeSuite-- will execute code before all Test folder where it is defined
+-- @AfterTest-- will execute code after all Test folder where it is defined
+-- @BeforeMethod-- will execute code only before all @Test methods of class where it is defined
+-- @AfterMethod-- will execute code only after all @Test methods of class where it is defined
+-- @BeforeClass-- will execute code only before any @Test methods of class where it is defined
+-- @AfterClass-- will execute code only after all @Test methods of class where it is defined
+-- annotation hierarchy: @BeforeSuite>@BeforeTest>@BeforeClass>@BeforeMethod>@Test>@AfterMethod>@AfterClass>@AfterTest>@AfterSuite
+
+-- how to run only selected methods from different classes and tests folder
+   @Test(groups= {"Smoke"})-- use a group tag to identify those methods
+  <test name="Regression">
+  <groups>
+    <run>
+       <include name="Smoke"/> -- even exclude can be used
+    </run>
+  </groups>
+    <classes>
+      <class name="test.day1"/> -- classes where those methods are present
+      <class name="test.day2"/>
+      <class name="test.day3"/>
+      <class name="test.day4"/>
+    </classes>
+  </test>
+
+-- how to make a method depnd upon other in a class
+   @Test(dependsOnMethods= {"WebloginCarLoan"})
+   now "WebloginCarLoan" method will be execute before this test 
+
+-- how to skip a test in a class
+   @Test(enabled=false)- now this test will be skipped
+   to execute again, make enabled=true
+
+-- how to set a timeout for a test in a class which is taking long time to execute
+   @Test(timeOut=4000)- now only for this test, execution will wait till specified time interval
+
+-- how to parameterise data from TestNG xml file 
+   <parameter name="URL" value="https://www.google.com"/>
+   <parameter name="userName" value="xxx123"/> (we can have multiple data parametarised)
+   -- adding data in xms, it can be at different scope level
+   -- if data is applicable to all tests inside all test folders, declear at Suite level
+   -- if data is applicable to all tests inside a test folder, declear at that test level only
+
+   @Parameters({"URL","userName"})-- reading data in required test
+	@Test
+	public void SecondTest(String url, String userName) {
+		System.out.println(url);
+                System.out.println(userName);
+	}
+
+-- how to run a @Test multiple times with a set of data using DataProvider (data parametarisation at test level)
+   @DataProvider
+	public Object[][] getData() {
+		Object[][] data= new Object[2][2];
+		data[0][0]="firstUserName";
+		data[0][1]="firstUserPassword";
+		data[1][0]="secondUserName";
+		data[1][1]="secondUserPassword";
+		
+		return data;
+	}
+
+    @Test(dataProvider="getData")-- both should be in same class
+    public void MobileloginHomeLoan(String userName, String password) {
+    	//System.out.println("Mobileloginhome");
+    	System.out.println(userName+" "+password);
+    	
+	}
+
+-- which interface is used for listners: ITestListner
+   this interface provides a lot of methods like onTestStart, onTestSuccess, onTestFailure
+   If we want to take screenshots upon test failure, we can go and write code under onTestFailure, and add listner info in xml folder
+   in xml-- <listener class-name="Listener_path"/>
+
+-- how todo parallel execution in TestNG-- parallel keyword
+   <suite name="ac" parallel="tests" thread-count="5">
+   -- this means that if suite has 20 tests folder, than at a time 5 of them will be executed paralley
+   <test name="xy" parallel="classes" thread-count="2">
+   -- this means that if test folder has 20 classes, than at a time 2 of them will be executed paralley
+   
+
+
+
+
+
