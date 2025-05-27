@@ -1,0 +1,7 @@
+:: to run http collection, use rest jar on desktop
+   java -jar rest.jar --server.port=7070
+   then hit url-- http://localhost:7070/student/list
+:: to run jenkins, use jenkins war file in downloads
+   java -jar jenkins.war --httpPort=9090
+   then hit url-- http://localhost:9090/
+   

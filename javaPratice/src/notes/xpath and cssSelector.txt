@@ -1,0 +1,21 @@
+cssSelector-
+syntax1: tagName[attribute='value']
+eg- input[id='Name']
+syntax2: tagName#id(value of id attribute)
+eg- input#password
+regular exp: tagName[attribute*='value']
+eg- a[title*='Sign in']
+
+xpath-
+syntax: //tagName[@attribute='value']
+eg-- //div[@id='name']
+regular exp: //tagName[contains(@attribute,'value')]
+eg-- //input[contains(@name,'procee')]
+
+html dom webelemnt format--
+<div class="xyz" id="abc"><\div>
+
+tagname-- div
+attribute-- class,id
+value-- xyz,abc
+
