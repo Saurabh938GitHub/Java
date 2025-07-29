@@ -30,4 +30,3 @@
    export and save the environment
    navigate to location of collection, open cmd
    newman run "name of the collection.json" -e "path of environment file/name of file.json" -d "data file name.extension(i.e., csv)"
-
