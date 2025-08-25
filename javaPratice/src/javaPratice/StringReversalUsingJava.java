@@ -1,5 +1,8 @@
 package javaPratice;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class StringReversalUsingJava {
@@ -17,5 +20,8 @@ public class StringReversalUsingJava {
 	    }
 	    obj.close();
 	    System.out.println("reversed string is: "+new String(c));
+	    
+	    List<String> list1 = Arrays.asList("A", "B");
+	    System.out.println(list1);
 }
 }

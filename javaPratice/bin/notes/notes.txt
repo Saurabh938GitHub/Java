@@ -1,0 +1,29 @@
+--Classes should not have spaces- Compound classes cannot be accepted
+--Multipl values - Selenium identifies the first one- Scans from top left
+--Double quotes inside double quotes are not accepted
+--Xpath/CSS  can be defined in n number of ways
+--Rightclick copy on blue highlighted html code to generate xpath
+--Firepath depreciated from firefox- 
+--when xpath starts with html-Not reliable- Switch browser to get another one
+--There is no direct way to get CSS in chrome. You will find it in tool bar
+--Degrade browser to less firefox 55 to ge Firepath
+--$("") - for css ,    $x("")   or xpath
+--//tagName[@attribute='value']  - xpath syntax
+--tagName[attribute='value']  -CSS  tagName#id- CSS   tagname.classname- CSS
+--//tagName[contains(@attribute,'value')]  - xpath regular expression
+--tagName[Atrribute*='value'] - Css regular expression
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- appium learning: https://youtu.be/Fx3ud5wMHYc
+https://rahulshettyacademy.com/dropdownsPractise/

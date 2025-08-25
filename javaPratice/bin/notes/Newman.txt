@@ -1,0 +1,32 @@
+:: Newman- command line collection runner for postman which allows to run and test postman collection directly from command line
+:: to run collection: all requests/folders
+   navigate to location of collection, open cmd
+   newman run "name of the collection.json"-- this will run all requests in all folders of the collection
+:: newman run "name of the collection.json" --silent
+   -- this command will execute the collection without logging anything in console
+:: newman run "name of the collection.json" --bail
+   -- Specify whether or not to gracefully stop a collection run on encountering an error
+:: newman run "name of the collection.json" --timeout [n]
+   --  Specify a timeout for collection run (milliseconds) (default: 0)
+:: newman run "name of the collection.json" -- --timeout-request [n]
+   --  Specify a timeout for requests (milliseconds) (default: 0)
+:: newman run -h: list out all available option that can be used along with run command 
+
+:: to run collection with specific folder(s) : all requests inside that particular folder(s)
+   navigate to location of collection, open cmd
+   newman run "name of the collection.json"--folder "folder1 name" --folder "folder2 name" - this will run all requests in that particular folder(s)
+
+:: to run collection with URL
+   -- click on share collection, get public link, copy link of that collection
+   -- open cmd
+   -- newman run URLofCollection
+
+:: to run collection with Environment : run collection with a particular environment selected
+   export and save the environment
+   navigate to location of collection, open cmd
+   newman run "name of the collection.json" -e "path of environment file/name of file.json"
+
+:: to run collection with Data : run collection with data set
+   export and save the environment
+   navigate to location of collection, open cmd
+   newman run "name of the collection.json" -e "path of environment file/name of file.json" -d "data file name.extension(i.e., csv)"

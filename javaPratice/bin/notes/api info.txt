@@ -1,0 +1,52 @@
+:: APIs are platform independent
+:: What is Web Services? Difference between APIs and Web Services?
+   -- Web Services are APIs which use internet while an API may or may not use internet
+   -- So, all Web Services are APIs but all APIs are not Web Services
+:: HTTP- Hyper Text Transfer Protocol
+:: HTTP Request/Response parts/contents
+   1. Start Line (mandatory)
+   -- Request start line contains version, http method, resouces, query/path parameters 
+      Ex-- GET /search?q=tuna HTTP/1.1
+   -- Response start line we have version, status and code
+      Ex-- HTTP/1.1 200 OK
+   2. Headers-- Extra information realted to api request and response
+   -- Request: Authorization, Cache, Content Type, Content-Length, Host
+   -- Response: Cache, Content-Length, Content-Type
+   3. Body-- In request body, we have content to make request and in response, we have content about api response
+   -- Body content can be data, audio, video, image, etc
+
+:: Idempotence-- result stays same no matter the times request is made
+   Except POST, every other http mrethod is Idempotent (safe to repeat)
+ 
+:: REST- Representational State Transfer
+
+:: What is difference between Authentication and Authorization?
+   -- Authentication: It means verifying entity's identity
+   -- Authorization: It means a entity's access to resources
+
+:: No Auth- Authentication(No), Authorization(No) 
+   Basic Auth- Authentication(Yes), Authorization(No) 
+   Bearer Token- Authentication(No), Authorization(Yes) 
+   OAuth-- Authentication(Yes), Authorization(Yes) 
+
+:: OAuth(Open Authorization) process
+   Lets suppose there is a Resource owner with two folders, private and public and server is password protected
+   Step1- Client asks Resource Owner for 'Authorization Request' for public folder
+   Step2- Resource Owner gives 'Authorization Grant'
+   Step3- Client sends 'Authorization Grant' to authorization server for verification
+   Step4- Authorization server provides 'Access Token' to client
+   Step5- Client sends service request with 'Access Token' to Resource sever
+   Step6- Server sends back result in form of response to Client
+
+:: Access Token- It is like client authentication to get protected but authorized resource from server
+   Refresh Token- It is used to get a new access token. As access tokens generally have expiry durations
+ 
+:: Nounce- Number used only once
+:: Only difference between bearer token and access token is that access token has a time span defined after which it expires.
+
+
+
+
+
+
+

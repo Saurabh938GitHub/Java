@@ -1,0 +1,105 @@
+@Managed
+WebDriver driver;
+-- Managed tag is used by serenity to initialize and manage the driver
+-- And we need to define browser type in 'serenity.properties' file under 'webdriver.driver=chrome'
+-- And add driver executable files under src/test/resources/drivers
+
+@Title("Any Title")
+-- this is used to add custome title to a test to be published in the report
+
+
+:: serenity.propeties/serenity.project.name= ABS
+-- this is used to print the project title in report
+
+:: serenity.properties/webdriver.driver=chrome
+-- this is used to declear the type of browser to be used
+
+:: serenity.properties/webdriver.timeouts.implicitlywait=5000
+-- this is used to set implicit wait
+
+:: serenity.properties/webdriver.wait.for.timeout=5000
+-- this is used to set explicit wait
+
+:: serenity.properties/webdriver.base.url="https://www.google.com"
+-- this is used to base url
+   @DefaultUrl("/login")-- this will add '/login' after the base url mentioned in serenity.properties
+
+:: serenity methods to find webelements
+   find(By selector)
+   find(By ..selectors)
+   find(List<By> selectors)
+   findBy(css or xpath) or $(css or xpath)
+   -- return type of all these is WebElementFacade
+   findAll(By selector)
+   -- return type of this is List<WebElementFacade>
+
+:: WebElementFacade- An interface which extends WebElement interface
+
+:: WebElementFacade.getWrappedElement()-- this will change WebElementFacade to WebElement
+
+:: inputbox-- extra methods other than sendkeys() and clear() provided by serenity framework
+   inputbox.type("xyz")-- will clear before entering text
+   inputbox.typeAndTab("xyz")-- enter text and tabs out to next element
+   inputbox.typeAndEnter("xyz")-- enter text and then clicks on Enter key
+
+:: dropdowns-- to operate on dropdown, we have 'Dropdown' class
+   -- this class has forWebElement(WebElement/WebElementFacade) method in whose argument we mention WebElement/WebElementFacade to operate on
+   -- forWebElement() method has different options like select, selectByValue, selectMulipleItems, etc
+   Ex- Dropdown.forWebElement(el).select("India")
+   Shortcut(if we have to select by text, diectly use method)-- selectFromDropdown(el,"India")
+
+:: checkboxes-- to operate on checkboxes, we have 'Checkbox' class
+   -- this class provides different methods to work
+   -- setChecked(Boolean value)- to select/deselct, provide True/false
+   -- isChecked()-- returns True/False if selected/unselected
+   Ex- Checkbox chk= new Checkbox(el);
+       chk.setChecked(true);
+   Shortcut(direct method)- setCheckbox(el, true)
+
+:: radiobuttons-- to operate on radiobuttons, we have 'RadioButtonGroup' class
+   -- this class provides different methods to work
+   -- selectByValue("India")- selects India option in radio button group
+   -- getSelectedValue().get()- gets the selected option in radio button group
+   Ex- RadioButtonGroup rd= new RadioButtonGroup(el);
+       rd.selectByValue("India");
+       Note- el has to be List<WebElement> consistings of all radio button options
+   Shortcut(direct method)- inadioButtonGroup("countries").selectByValue("India");
+
+:: serenity default implicit wait time is 2 secs
+   serenity default explicit wait time is 5 secs
+
+:: setImplicitTimeout(10,TimeUnit.SECONDS) 
+   -- this will setup implicit wait inside the code
+   -- serenity.properties/webdriver.timeouts.implicitlywait- will be over ridden
+   -- not the best way and rememeber to reset using resetImplicitTimeout()
+
+:: exlicit waits
+   -- el.waitUntilClickable().click();
+   -- el.waitUntilDisabled()
+   -- el.waitUntilEnabled()
+   -- el.waitUntilPresent()
+   -- el.waitUntilVisible()
+   -- waitFor(el)
+   -- waitForTitleToAppear()
+   -- waitForTextToAppear()
+   for these methods, explicit time defined in serenity.properties file is taken
+   -- el.waitTimeoutOf(10,TimeUnit.SECONDS)
+   for this method, explicit time defined in serenity.properties file is overridden with mentioned time unit argument
+
+:: file upload on an element el
+   upload(filePath).to(el);
+
+:: handling alerts
+   -- getAlert().getText()  
+   -- getAlert().accept()
+   -- getAlert().dismiss()
+   -- getAlert().sendKeys()
+
+:: to perform javascript operations, serenity provides 'evaluateJavaScript()' method
+
+:: mouse interactions
+  -- withAction().dragAndDrop(el1,el2)
+  -- other all methods of action calsses can be used along withAction() method
+
+
+
