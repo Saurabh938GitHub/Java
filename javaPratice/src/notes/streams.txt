@@ -1,4 +1,4 @@
--- A stream represents a sequence of elements. It is not a data structure. It does not store data on which it is applied.
+-- A stream represents a sequence of elements. It is not a data structure. It does not store data on which it is applied. Streams can be used with List, Set, Map, etc.
 
 -- Note: when list is empty, then streams operations will not get performed and also no exception would be thrown.
 
@@ -31,7 +31,7 @@ Ex: list.stream().filter().limit().sorted().map().forEach()-- here list data wil
    1. forEach(): used for consuming each object. Input is Consumer<T>
       Ex: forEach(i -> i.click())
    2. collect(): to collect object into list, set, map, etc.
-      Ex: collect(Collectors.toList())
+      Ex: collect(Collectors.toList()/Collectors.toSet())
    3. count(): to lcount the object. No Input
       Ex: count()
    4. min(): first element after compairing all. Input is Comparator
@@ -40,11 +40,24 @@ Ex: list.stream().filter().limit().sorted().map().forEach()-- here list data wil
       Ex: max(Comparator.naturalOrder()/Comparator.reverseOrder())
    6. findAny(): just give one element from the stream. No Input
       Ex: findAny()
-   7. anyMatch(): is there any element in the stream which satisfies the condition. Input is Predicate<T>
+   7. findFirst(): just give firs element from the stream. No Input
+      Ex: findFirst()
+   8. anyMatch(): is there any element in the stream which satisfies the condition. Input is Predicate<T>
       Ex: anyMatch(i -> i>5)
-   8. noneMatch(): all elements in the stream should not satisfy the condition. Input is Predicate<T>
+   9. noneMatch(): all elements in the stream should not satisfy the condition. Input is Predicate<T>
       Ex: noneMatch(i -> i>5)
+   10. reduce(): combines all elements into one element.
+      Ex: reduce((a,b) -> a+b)
 
+
+-- Stream parallel: creates multiple threads which increases the performance and also reduces the execution data.
+   Ex: list.stream().parallel().map().filter().forEach()
+
+-- Streams can be created using strings as well.
+   Ex: Stream.of("string","string","string")
+
+-- Optional<String> means that if there is a chance that the operation might return null, then instead of returning null and causing null pointer exception, return an Optional<String> object. 
+   Optional object can be of any type, i.e., String, WebDriver, Integer, etc  
 
 
 
